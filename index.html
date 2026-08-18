@@ -92,11 +92,11 @@ section.list { padding: 60px 6vw 120px; }
 .hero-flex { display: flex; justify-content: space-between; align-items: center; gap: 40px; flex-wrap: wrap; }
 .hero-text { flex: 1 1 480px; }
 .brand-mark { flex-shrink: 0; }
-.brand-mark svg { width: 260px; height: 260px; }
+.brand-mark img { width: 260px; height: 260px; border-radius: 50%; object-fit: cover; }
 
 @media (max-width: 900px) {
   .hero-flex { flex-direction: column; align-items: flex-start; }
-  .brand-mark svg { width: 180px; height: 180px; }
+  .brand-mark img { width: 180px; height: 180px; }
   .grid { grid-template-columns: 1fr; }
   .detail-wrap { grid-template-columns: 1fr; }
   .detail-info { border-left: none; border-top: 1px solid var(--line); }
@@ -126,52 +126,19 @@ footer { padding: 50px 6vw; border-top: 1px solid var(--line); display: flex; ju
       <h1 class="page-title">Vintage tone.<br>Rare provenance.<br><em style="color:var(--gold); font-style:italic; font-weight:600;">Living history.</em></h1>
       <p class="page-sub">Eine handverlesene Sammlung historischer Gibson und Fender Gitarren — von original Vintage Gitarren bis hin zu Custom-Shop-Raritäten. Jede Gitarre erzählt ihre eigene Geschichte.</p>
     </div>
-    <div class="brand-mark"><svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chris Burgstaller Guitar Emblem">
-  <circle cx="130" cy="130" r="126" fill="none" stroke="#c9a15c" stroke-width="1.5"/>
-  <circle cx="130" cy="130" r="115" fill="none" stroke="#c9a15c" stroke-width="0.75"/>
-  <path id="arcTop" d="M 40 130 A 90 90 0 0 1 220 130" fill="none"/>
-  <path id="arcBottom" d="M 220 140 A 90 90 0 0 1 40 140" fill="none"/>
-  <text font-family="Space Mono, monospace" font-size="11.5" letter-spacing="2" fill="#e9e3d6">
-    <textPath href="#arcTop" startOffset="50%" text-anchor="middle">CHRIS BURGSTALLER GUITARS</textPath>
-  </text>
-  <text font-family="Space Mono, monospace" font-size="10.5" letter-spacing="2.2" fill="#c9a15c">
-    <textPath href="#arcBottom" startOffset="50%" text-anchor="middle">WWW.BURGSTALLER.ORG</textPath>
-  </text>
-  <g transform="translate(130,150) rotate(-12) scale(0.62)" fill="none" stroke="#c9a15c" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M 25,15 C 45,10 55,35 52,58 C 50,82 32,98 3,100 C -28,102 -52,82 -54,52 C -56,26 -42,3 -18,-4 C -14,-5 -10,-6 -10,-6 C -2,-9 12,4 25,15 Z" stroke-width="3"/>
-    <rect x="-18" y="30" width="34" height="9" rx="2" stroke-width="2"/>
-    <rect x="-14" y="52" width="26" height="9" rx="2" stroke-width="2"/>
-    <rect x="-10" y="74" width="20" height="6" rx="1.5" stroke-width="2"/>
-    <circle cx="30" cy="66" r="5" stroke-width="2"/>
-    <circle cx="34" cy="82" r="5" stroke-width="2"/>
-    <path d="M -10,-6 L -22,-95 L -2,-95 L 6,-8" stroke-width="2.5"/>
-    <line x1="-19" y1="-70" x2="1" y2="-70" stroke-width="1.5" opacity="0.7"/>
-    <line x1="-18" y1="-50" x2="0" y2="-50" stroke-width="1.5" opacity="0.7"/>
-    <line x1="-17" y1="-30" x2="-1" y2="-30" stroke-width="1.5" opacity="0.7"/>
-    <path d="M -22,-95 C -30,-100 -30,-118 -22,-124 L -2,-124 C 4,-118 4,-100 -2,-95 Z" stroke-width="2.5"/>
-    <circle cx="-27" cy="-100" r="3" fill="#c9a15c" stroke="none"/>
-    <circle cx="-27" cy="-110" r="3" fill="#c9a15c" stroke="none"/>
-    <circle cx="-27" cy="-120" r="3" fill="#c9a15c" stroke="none"/>
-    <circle cx="3" cy="-100" r="3" fill="#c9a15c" stroke="none"/>
-    <circle cx="3" cy="-110" r="3" fill="#c9a15c" stroke="none"/>
-    <circle cx="3" cy="-120" r="3" fill="#c9a15c" stroke="none"/>
-    <line x1="-19" y1="-95" x2="-6" y2="76" stroke-width="0.8" opacity="0.55"/>
-    <line x1="-15" y1="-95" x2="-2" y2="76" stroke-width="0.8" opacity="0.55"/>
-    <line x1="-11" y1="-95" x2="2" y2="76" stroke-width="0.8" opacity="0.55"/>
-    <line x1="-7" y1="-95" x2="6" y2="76" stroke-width="0.8" opacity="0.55"/>
-  </g>
-</svg></div>
+    <div class="brand-mark">
+      <img src="logo.jpeg" alt="Chris Burgstaller Guitars Logo">
+    </div>
   </div>
 </section>
 <section class="list">
   <div class="grid">
     <a class="card" href="guitars/1959-cc24-nicky.html">
-  <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i9ed795a4174584bb/version/1546173393/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
+  <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i9ed795a4174584bb/version/1546173393/image.jpg" alt="Les Paul Collector's Choice CC24 &quot;Nicky - Charles Daughtry&quot;" loading="lazy">
   <div class="card-body">
     <div class="year">2015 <span class="repro">/ '59 Repro</span></div>
     <h3>Gibson Les Paul Collector's Choice CC24"</h3>
     <div class="nickname">"Nicky"</div>
-    
   </div>
 </a>
     <a class="card" href="guitars/1959-cc16-redeye.html">
@@ -180,7 +147,6 @@ footer { padding: 50px 6vw; border-top: 1px solid var(--line); display: flex; ju
     <div class="year">2013 <span class="repro">/ '59 Repro</span></div>
     <h3>Gibson Les Paul Collector's Choice CC16</h3>
     <div class="nickname">"Redeye - Ed King"</div>
-    
   </div>
 </a>
     <a class="card" href="guitars/1960-cc3-the-babe.html">
@@ -189,7 +155,6 @@ footer { padding: 50px 6vw; border-top: 1px solid var(--line); display: flex; ju
     <div class="year">2012 <span class="repro">/ '60 Repro</span></div>
     <h3>Gibson Les Paul Collector's Choice CC3</h3>
     <div class="nickname">"The Babe / Batman"</div>
-    
   </div>
 </a>
     <a class="card" href="guitars/1958-amanda.html">
@@ -198,7 +163,6 @@ footer { padding: 50px 6vw; border-top: 1px solid var(--line); display: flex; ju
     <div class="year">2014 <span class="repro">/ '58 Repro</span></div>
     <h3>Gibson Les Paul Historic Reissue VOS Flametop</h3>
     <div class="nickname">"Amanda"</div>
-    
   </div>
 </a>
     <a class="card" href="guitars/1958-carol.html">
@@ -207,7 +171,6 @@ footer { padding: 50px 6vw; border-top: 1px solid var(--line); display: flex; ju
     <div class="year">2016 <span class="repro">/ '58 Repro</span></div>
     <h3>Gibson Les Paul Historic Reissue VOS Flametop</h3>
     <div class="nickname">"Carol"</div>
-    
   </div>
 </a>
     <a class="card" href="guitars/1959-roxy.html">
@@ -216,7 +179,6 @@ footer { padding: 50px 6vw; border-top: 1px solid var(--line); display: flex; ju
     <div class="year">2012 <span class="repro">/ '59 Repro</span></div>
     <h3>Ginbson Les Paul Historic Reissue Aged Flametop</h3>
     <div class="nickname">"Roxy"</div>
-    
   </div>
 </a>
   </div>
