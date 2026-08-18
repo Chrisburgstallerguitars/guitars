@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2015 Les Paul Collector's Choice CC24 — Chris Burgstaller Guitars</title>
+<title>2015 Gibson Les Paul Collector's Choice CC24 — Chris Burgstaller Guitars</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap');
 
@@ -72,7 +72,7 @@ section.list { padding: 60px 6vw 120px; }
 
 /* Detail page */
 .detail-wrap { display: grid; grid-template-columns: 1.3fr 1fr; gap: 0; }
-.detail-img { width: 100%; height: 100%; min-height: 480px; object-fit: cover; background: #100e0b; filter: grayscale(10%) contrast(1.05); }
+.detail-img { width: 100%; height: 100%; min-height: 480px; object-fit: cover; background: #100e0b; filter: grayscale(10%) contrast(1.05); cursor: pointer; }
 .detail-info { padding: 56px 5vw; border-left: 1px solid var(--line); }
 .detail-nickname { font-family: 'Fraunces', serif; font-style: italic; font-weight: 600; color: var(--gold); font-size: 28px; margin-bottom: 6px; }
 .detail-model { font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(28px, 3vw, 40px); line-height: 1.1; margin-bottom: 28px; }
@@ -94,6 +94,71 @@ section.list { padding: 60px 6vw 120px; }
 .brand-mark { flex-shrink: 0; }
 .brand-mark svg { width: 260px; height: 260px; }
 
+/* Lightbox Modal */
+.lightbox {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(12, 11, 10, 0.95);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.lightbox.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.lightbox img {
+  max-width: 85vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+.lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  color: var(--cream);
+  font-size: 32px;
+  cursor: pointer;
+  font-family: 'Space Mono', monospace;
+  transition: color 0.2s;
+  user-select: none;
+}
+.lightbox-close:hover {
+  color: var(--gold);
+}
+.lightbox-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(22, 20, 18, 0.6);
+  border: 1px solid var(--line);
+  color: var(--cream);
+  font-size: 24px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  user-select: none;
+}
+.lightbox-btn:hover {
+  background: var(--bg-raised);
+  color: var(--gold);
+  border-color: var(--gold);
+}
+.lightbox-btn.prev { left: 24px; }
+.lightbox-btn.next { right: 24px; }
+
 @media (max-width: 900px) {
   .hero-flex { flex-direction: column; align-items: flex-start; }
   .brand-mark svg { width: 180px; height: 180px; }
@@ -101,6 +166,8 @@ section.list { padding: 60px 6vw 120px; }
   .detail-wrap { grid-template-columns: 1fr; }
   .detail-info { border-left: none; border-top: 1px solid var(--line); }
   nav { display: none; }
+  .lightbox-btn.prev { left: 10px; }
+  .lightbox-btn.next { right: 10px; }
 }
 
 footer { padding: 50px 6vw; border-top: 1px solid var(--line); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; color: var(--grey); font-size: 13px; }
@@ -118,10 +185,10 @@ footer { padding: 50px 6vw; border-top: 1px solid var(--line); display: flex; ju
     <a href="../contact.html">Contact</a>
   </nav>
 </header>
-<div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../collection.html">Collection</a> / Gibson Les Paul Collector's Choice CC24"</div>
+<div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../collection.html">Collection</a> / Gibson Les Paul Collector's Choice CC24</div>
 <section class="list" style="padding-top:0;">
   <div class="detail-wrap">
-    <img class="detail-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i9ed795a4174584bb/version/1546173393/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"">
+    <img class="detail-img" src="1959-cc24-nicky/nicky.jpg">
     <div class="detail-info">
       
       <div class="detail-nickname">"Nicky"</div>
@@ -139,49 +206,58 @@ footer { padding: 50px 6vw; border-top: 1px solid var(--line); display: flex; ju
   </div>
 </section>
 <section class="photo-gallery-section">
-  <div class="photo-gallery-head">Photo Gallery — 39 Fotos</div>
+  <div class="photo-gallery-head">Photo Gallery</div>
   <div class="photo-gallery-grid">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i940c18f558c5766c/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i17ff5de97bf2fd18/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/ic1a0bf12b557798f/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/ibc32102cdaa2120c/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i47b85932aedd3002/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/ib97843c195498927/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/ie0c36f94e4e4109c/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i17c75379b9867aef/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i916e81cd9bf210f3/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i431fc90f905ab719/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i02c0a97565fb9b9c/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i56de2cd387aad5b8/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i37908eb174017b64/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i548afec68f69624a/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/id61610df6675e527/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/ie5e47237b23465bc/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i5e74e09e4cacd4ec/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i6991344aa79e320a/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i282e7c960197e979/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i3225cc7f11e4360a/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/ibea4a68a54289611/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i87f04529779b8d06/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i4d39a1e822d2ee67/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i69c9109c097effca/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/if4c12fa780b44638/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i13c7b009ff7def10/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/ie9a4bcbcd5d4ee77/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/id662b19f78c3f047/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i655096289737b6be/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i711d129b164d152f/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/ifd72ef959cfcd0ad/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i5bc5437d8a7b6b58/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/if510251cf33bff9a/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/idd098d31fb1211aa/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/ia2a8da18794f1e26/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i2e62fc6fad892680/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i4e79f3e6a91ab9ad/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i6c027d902f1faab6/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i18e89f97919d194e/version/1546173777/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
+    <img src="1959-cc24-nicky/1.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/2.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/3.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/4.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/5.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/6.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/7.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/8.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/9.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/10.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/11.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/12.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/13.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/14.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/15.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/16.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/17.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/18.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/19.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/20.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/21.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/22.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/23.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/24.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/25.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/26.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/27.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/28.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/29.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/30.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/31.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/32.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/33.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/34.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/35.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/36.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/37.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/38.jpg" loading="lazy">
+    <img src="1959-cc24-nicky/39.jpg" loading="lazy">
   </div>
 </section>
+
+<!-- Lightbox Modal -->
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" id="lightbox-close">&times;</span>
+  <button class="lightbox-btn prev" id="lightbox-prev">&#10094;</button>
+  <img id="lightbox-img" src="">
+  <button class="lightbox-btn next" id="lightbox-next">&#10095;</button>
+</div>
+
 <footer>
   <div>
     <span class="footer-logo">CHRIS BURGSTALLER GUITARS - WWW.BURGSTALLER.ORG</span>
@@ -189,5 +265,72 @@ footer { padding: 50px 6vw; border-top: 1px solid var(--line); display: flex; ju
   </div>
   <div>&copy; 2026 &mdash; Alle Rechte vorbehalten</div>
 </footer>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const closeBtn = document.getElementById('lightbox-close');
+  const prevBtn = document.getElementById('lightbox-prev');
+  const nextBtn = document.getElementById('lightbox-next');
+  
+  // Alle Galerie-Bilder in ein Array laden
+  const galleryImages = Array.from(document.querySelectorAll('.photo-gallery-grid img'));
+  let currentIndex = 0;
+
+  function showImage(index) {
+    currentIndex = index;
+    lightboxImg.src = galleryImages[currentIndex].src;
+  }
+
+  // Klick-Event für Galeriebilder
+  galleryImages.forEach((img, index) => {
+    img.addEventListener('click', () => {
+      showImage(index);
+      lightbox.classList.add('active');
+    });
+  });
+
+  // Klick-Event für das Hauptbild oben
+  document.querySelector('.detail-img').addEventListener('click', (e) => {
+    lightboxImg.src = e.target.src;
+    lightbox.classList.add('active');
+  });
+
+  // Navigation: Vorheriges Bild
+  prevBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    let newIndex = currentIndex - 1;
+    if (newIndex < 0) newIndex = galleryImages.length - 1;
+    showImage(newIndex);
+  });
+
+  // Navigation: Nächstes Bild
+  nextBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    let newIndex = currentIndex + 1;
+    if (newIndex >= galleryImages.length) newIndex = 0;
+    showImage(newIndex);
+  });
+
+  // Schließen bei Klick auf X
+  closeBtn.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+  });
+
+  // Schließen bei Klick auf den Hintergrund
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      lightbox.classList.remove('active');
+    }
+  });
+
+  // Tastatursteuerung (ESC, Pfeiltasten)
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') lightbox.classList.remove('active');
+    if (e.key === 'ArrowLeft') prevBtn.click();
+    if (e.key === 'ArrowRight') nextBtn.click();
+  });
+</script>
 </body>
 </html>

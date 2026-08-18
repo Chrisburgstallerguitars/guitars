@@ -72,7 +72,7 @@ section.list { padding: 60px 6vw 120px; }
 
 /* Detail page */
 .detail-wrap { display: grid; grid-template-columns: 1.3fr 1fr; gap: 0; }
-.detail-img { width: 100%; height: 100%; min-height: 480px; object-fit: cover; background: #100e0b; filter: grayscale(10%) contrast(1.05); }
+.detail-img { width: 100%; height: 100%; min-height: 480px; object-fit: cover; background: #100e0b; filter: grayscale(10%) contrast(1.05); cursor: pointer; }
 .detail-info { padding: 56px 5vw; border-left: 1px solid var(--line); }
 .detail-nickname { font-family: 'Fraunces', serif; font-style: italic; font-weight: 600; color: var(--gold); font-size: 28px; margin-bottom: 6px; }
 .detail-model { font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(28px, 3vw, 40px); line-height: 1.1; margin-bottom: 28px; }
@@ -94,6 +94,71 @@ section.list { padding: 60px 6vw 120px; }
 .brand-mark { flex-shrink: 0; }
 .brand-mark svg { width: 260px; height: 260px; }
 
+/* Lightbox Modal */
+.lightbox {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(12, 11, 10, 0.95);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.lightbox.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.lightbox img {
+  max-width: 85vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+.lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  color: var(--cream);
+  font-size: 32px;
+  cursor: pointer;
+  font-family: 'Space Mono', monospace;
+  transition: color 0.2s;
+  user-select: none;
+}
+.lightbox-close:hover {
+  color: var(--gold);
+}
+.lightbox-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(22, 20, 18, 0.6);
+  border: 1px solid var(--line);
+  color: var(--cream);
+  font-size: 24px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  user-select: none;
+}
+.lightbox-btn:hover {
+  background: var(--bg-raised);
+  color: var(--gold);
+  border-color: var(--gold);
+}
+.lightbox-btn.prev { left: 24px; }
+.lightbox-btn.next { right: 24px; }
+
 @media (max-width: 900px) {
   .hero-flex { flex-direction: column; align-items: flex-start; }
   .brand-mark svg { width: 180px; height: 180px; }
@@ -101,6 +166,8 @@ section.list { padding: 60px 6vw 120px; }
   .detail-wrap { grid-template-columns: 1fr; }
   .detail-info { border-left: none; border-top: 1px solid var(--line); }
   nav { display: none; }
+  .lightbox-btn.prev { left: 10px; }
+  .lightbox-btn.next { right: 10px; }
 }
 
 footer { padding: 50px 6vw; border-top: 1px solid var(--line); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; color: var(--grey); font-size: 13px; }
@@ -121,9 +188,8 @@ footer { padding: 50px 6vw; border-top: 1px solid var(--line); display: flex; ju
 <div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../collection.html">Collection</a> / Les Paul Historic Reissue Goldtop</div>
 <section class="list" style="padding-top:0;">
   <div class="detail-wrap">
-    <img class="detail-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i30be351b5f105b28/version/1520331597/image.jpg" alt="Les Paul Historic Reissue Goldtop">
+    <img class="detail-img" src="1954-goldtop/54goldtop.jpg">
     <div class="detail-info">
-      
       
       <h1 class="detail-model">2004 <span style="color:var(--grey); font-size:0.55em;">/ '54 Repro</span><br>Gibson Les Paul Historic Reissue Goldtop (ex Henrik Freischlader)</h1>
       <div class="spec-table">
@@ -139,36 +205,45 @@ footer { padding: 50px 6vw; border-top: 1px solid var(--line); display: flex; ju
   </div>
 </section>
 <section class="photo-gallery-section">
-  <div class="photo-gallery-head">Photo Gallery — 26 Fotos</div>
+  <div class="photo-gallery-head">Photo Gallery</div>
   <div class="photo-gallery-grid">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i0b7952359a45a0ef/version/1520331558/image.jpg" alt="Les Paul Historic Reissue Goldtop" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i7b0a03493b36e15c/version/1520331558/image.jpg" alt="Les Paul Historic Reissue Goldtop" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i2c43f19de5222767/version/1520331558/image.jpg" alt="Les Paul Historic Reissue Goldtop" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i979930c8b236c106/version/1520331558/image.jpg" alt="Les Paul Historic Reissue Goldtop" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/ia089e6e8ec526906/version/1520331558/image.jpg" alt="Les Paul Historic Reissue Goldtop" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i5c0e337b855353d8/version/1520331558/image.jpg" alt="Les Paul Historic Reissue Goldtop" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i6a09ccb1c0b2a9a8/version/1520331558/image.jpg" alt="Les Paul Historic Reissue Goldtop" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i5764d5a5a23f4569/version/1520331558/image.jpg" alt="Les Paul Historic Reissue Goldtop" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i612be4dfe65f4257/version/1520331558/image.jpg" alt="Les Paul Historic Reissue Goldtop" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i0e7db7eddf464f3d/version/1520331558/image.jpg" alt="Les Paul Historic Reissue Goldtop" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/ide312087792e8349/version/1520331558/image.jpg" alt="Les Paul Historic Reissue Goldtop" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i222d2843cde2887f/version/1520331558/image.jpg" alt="Les Paul Historic Reissue Goldtop" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/ie93c67ebb9ab75dd/version/1520331558/image.jpg" alt="Les Paul Historic Reissue Goldtop" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i2cf9680c9f09b9e6/version/1520331558/image.jpg" alt="Les Paul Historic Reissue Goldtop" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/if40525c5efe82006/version/1520331558/image.jpg" alt="Les Paul Historic Reissue Goldtop" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i0db49f49148ce01b/version/1520331558/image.jpg" alt="Les Paul Historic Reissue Goldtop" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/ic1a239d62fddb5b8/version/1520331558/image.jpg" alt="Les Paul Historic Reissue Goldtop" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i99b17bb6fe3e0f19/version/1520331558/image.jpg" alt="Les Paul Historic Reissue Goldtop" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/idf4d77da1fcdfb0c/version/1520331558/image.jpg" alt="Les Paul Historic Reissue Goldtop" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i859494424c41397f/version/1520331558/image.jpg" alt="Les Paul Historic Reissue Goldtop" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/ibe24830e8ece3d18/version/1520331558/image.jpg" alt="Les Paul Historic Reissue Goldtop" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/i85221c5cba1b8b16/version/1520331558/image.jpg" alt="Les Paul Historic Reissue Goldtop" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/if3f7a41665328b06/version/1520331558/image.jpg" alt="Les Paul Historic Reissue Goldtop" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/ib735eec164a364a8/version/1520331558/image.jpg" alt="Les Paul Historic Reissue Goldtop" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/ifcaba0fc8d04952b/version/1520331558/image.jpg" alt="Les Paul Historic Reissue Goldtop" loading="lazy">
-    <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x800:mode=crop:format=jpg/path/s8484630f1b34ca9a/image/ib268d27cf78726d9/version/1520331558/image.jpg" alt="Les Paul Historic Reissue Goldtop" loading="lazy">
+    <img src="1954-goldtop/1.jpg" loading="lazy">
+    <img src="1954-goldtop/2.jpg" loading="lazy">
+    <img src="1954-goldtop/3.jpg" loading="lazy">
+    <img src="1954-goldtop/4.jpg" loading="lazy">
+    <img src="1954-goldtop/5.jpg" loading="lazy">
+    <img src="1954-goldtop/6.jpg" loading="lazy">
+    <img src="1954-goldtop/7.jpg" loading="lazy">
+    <img src="1954-goldtop/8.jpg" loading="lazy">
+    <img src="1954-goldtop/9.jpg" loading="lazy">
+    <img src="1954-goldtop/10.jpg" loading="lazy">
+    <img src="1954-goldtop/11.jpg" loading="lazy">
+    <img src="1954-goldtop/12.jpg" loading="lazy">
+    <img src="1954-goldtop/13.jpg" loading="lazy">
+    <img src="1954-goldtop/14.jpg" loading="lazy">
+    <img src="1954-goldtop/15.jpg" loading="lazy">
+    <img src="1954-goldtop/16.jpg" loading="lazy">
+    <img src="1954-goldtop/17.jpg" loading="lazy">
+    <img src="1954-goldtop/18.jpg" loading="lazy">
+    <img src="1954-goldtop/19.jpg" loading="lazy">
+    <img src="1954-goldtop/20.jpg" loading="lazy">
+    <img src="1954-goldtop/21.jpg" loading="lazy">
+    <img src="1954-goldtop/22.jpg" loading="lazy">
+    <img src="1954-goldtop/23.jpg" loading="lazy">
+    <img src="1954-goldtop/24.jpg" loading="lazy">
+    <img src="1954-goldtop/25.jpg" loading="lazy">
+    <img src="1954-goldtop/26.jpg" loading="lazy">
   </div>
 </section>
+
+<!-- Lightbox Modal -->
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" id="lightbox-close">&times;</span>
+  <button class="lightbox-btn prev" id="lightbox-prev">&#10094;</button>
+  <img id="lightbox-img" src="">
+  <button class="lightbox-btn next" id="lightbox-next">&#10095;</button>
+</div>
+
 <footer>
   <div>
     <span class="footer-logo">CHRIS BURGSTALLER GUITARS - WWW.BURGSTALLER.ORG</span>
@@ -176,5 +251,72 @@ footer { padding: 50px 6vw; border-top: 1px solid var(--line); display: flex; ju
   </div>
   <div>&copy; 2026 &mdash; Alle Rechte vorbehalten</div>
 </footer>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const closeBtn = document.getElementById('lightbox-close');
+  const prevBtn = document.getElementById('lightbox-prev');
+  const nextBtn = document.getElementById('lightbox-next');
+  
+  // Alle Galerie-Bilder in ein Array laden
+  const galleryImages = Array.from(document.querySelectorAll('.photo-gallery-grid img'));
+  let currentIndex = 0;
+
+  function showImage(index) {
+    currentIndex = index;
+    lightboxImg.src = galleryImages[currentIndex].src;
+  }
+
+  // Klick-Event für Galeriebilder
+  galleryImages.forEach((img, index) => {
+    img.addEventListener('click', () => {
+      showImage(index);
+      lightbox.classList.add('active');
+    });
+  });
+
+  // Klick-Event für das Hauptbild oben
+  document.querySelector('.detail-img').addEventListener('click', (e) => {
+    lightboxImg.src = e.target.src;
+    lightbox.classList.add('active');
+  });
+
+  // Navigation: Vorheriges Bild
+  prevBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    let newIndex = currentIndex - 1;
+    if (newIndex < 0) newIndex = galleryImages.length - 1;
+    showImage(newIndex);
+  });
+
+  // Navigation: Nächstes Bild
+  nextBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    let newIndex = currentIndex + 1;
+    if (newIndex >= galleryImages.length) newIndex = 0;
+    showImage(newIndex);
+  });
+
+  // Schließen bei Klick auf X
+  closeBtn.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+  });
+
+  // Schließen bei Klick auf den Hintergrund
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      lightbox.classList.remove('active');
+    }
+  });
+
+  // Tastatursteuerung (ESC, Pfeiltasten)
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') lightbox.classList.remove('active');
+    if (e.key === 'ArrowLeft') prevBtn.click();
+    if (e.key === 'ArrowRight') nextBtn.click();
+  });
+</script>
 </body>
 </html>
