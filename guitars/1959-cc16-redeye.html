@@ -72,7 +72,7 @@ section.list { padding: 60px 6vw 120px; }
 
 /* Detail page */
 .detail-wrap { display: grid; grid-template-columns: 1.3fr 1fr; gap: 0; }
-.detail-img { width: 100%; height: 100%; min-height: 480px; object-fit: cover; background: #100e0b; filter: grayscale(10%) contrast(1.05); }
+.detail-img { width: 100%; height: 100%; min-height: 480px; object-fit: cover; background: #100e0b; filter: grayscale(10%) contrast(1.05); cursor: pointer; }
 .detail-info { padding: 56px 5vw; border-left: 1px solid var(--line); }
 .detail-nickname { font-family: 'Fraunces', serif; font-style: italic; font-weight: 600; color: var(--gold); font-size: 28px; margin-bottom: 6px; }
 .detail-model { font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(28px, 3vw, 40px); line-height: 1.1; margin-bottom: 28px; }
@@ -94,6 +94,71 @@ section.list { padding: 60px 6vw 120px; }
 .brand-mark { flex-shrink: 0; }
 .brand-mark svg { width: 260px; height: 260px; }
 
+/* Lightbox Modal */
+.lightbox {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(12, 11, 10, 0.95);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.lightbox.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.lightbox img {
+  max-width: 85vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+.lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  color: var(--cream);
+  font-size: 32px;
+  cursor: pointer;
+  font-family: 'Space Mono', monospace;
+  transition: color 0.2s;
+  user-select: none;
+}
+.lightbox-close:hover {
+  color: var(--gold);
+}
+.lightbox-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(22, 20, 18, 0.6);
+  border: 1px solid var(--line);
+  color: var(--cream);
+  font-size: 24px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  user-select: none;
+}
+.lightbox-btn:hover {
+  background: var(--bg-raised);
+  color: var(--gold);
+  border-color: var(--gold);
+}
+.lightbox-btn.prev { left: 24px; }
+.lightbox-btn.next { right: 24px; }
+
 @media (max-width: 900px) {
   .hero-flex { flex-direction: column; align-items: flex-start; }
   .brand-mark svg { width: 180px; height: 180px; }
@@ -101,6 +166,8 @@ section.list { padding: 60px 6vw 120px; }
   .detail-wrap { grid-template-columns: 1fr; }
   .detail-info { border-left: none; border-top: 1px solid var(--line); }
   nav { display: none; }
+  .lightbox-btn.prev { left: 10px; }
+  .lightbox-btn.next { right: 10px; }
 }
 
 footer { padding: 50px 6vw; border-top: 1px solid var(--line); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; color: var(--grey); font-size: 13px; }
@@ -118,10 +185,10 @@ footer { padding: 50px 6vw; border-top: 1px solid var(--line); display: flex; ju
     <a href="../contact.html">Contact</a>
   </nav>
 </header>
-<div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../collection.html">Collection</a> / Les Paul Collector's Choice CC16</div>
+<div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../collection.html">Collection</a> / Gibson Les Paul Collector's Choice CC16</div>
 <section class="list" style="padding-top:0;">
   <div class="detail-wrap">
-    <img class="detail-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/ia359060309bb54db/version/1448883081/image.jpg" alt="Les Paul Collector's Choice CC16">
+    <img class="detail-img" src="1959-cc16-redeye/redeye.jpg" alt="Gibson Les Paul Collector's Choice CC16">
     <div class="detail-info">
       
       <div class="detail-nickname">"Redeye - Ed King"</div>
@@ -138,7 +205,30 @@ footer { padding: 50px 6vw; border-top: 1px solid var(--line); display: flex; ju
     </div>
   </div>
 </section>
-<div class="no-photos-note">Vollständige Foto-Galerie folgt in Kürze.</div>
+<section class="photo-gallery-section">
+  <div class="photo-gallery-head">Photo Gallery</div>
+  <div class="photo-gallery-grid">
+    <img src="1959-cc16-redeye/1.jpg" loading="lazy">
+    <img src="1959-cc16-redeye/2.jpg" loading="lazy">
+    <img src="1959-cc16-redeye/3.jpg" loading="lazy">
+    <img src="1959-cc16-redeye/4.jpg" loading="lazy">
+    <img src="1959-cc16-redeye/5.jpg" loading="lazy">
+    <img src="1959-cc16-redeye/6.jpg" loading="lazy">
+    <img src="1959-cc16-redeye/7.jpg" loading="lazy">
+    <img src="1959-cc16-redeye/8.jpg" loading="lazy">
+    <img src="1959-cc16-redeye/9.jpg" loading="lazy">
+    <img src="1959-cc16-redeye/10.jpg" loading="lazy">
+  </div>
+</section>
+
+<!-- Lightbox Modal -->
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" id="lightbox-close">&times;</span>
+  <button class="lightbox-btn prev" id="lightbox-prev">&#10094;</button>
+  <img id="lightbox-img" src="">
+  <button class="lightbox-btn next" id="lightbox-next">&#10095;</button>
+</div>
+
 <footer>
   <div>
     <span class="footer-logo">CHRIS BURGSTALLER GUITARS - WWW.BURGSTALLER.ORG</span>
@@ -146,5 +236,72 @@ footer { padding: 50px 6vw; border-top: 1px solid var(--line); display: flex; ju
   </div>
   <div>&copy; 2026 &mdash; Alle Rechte vorbehalten</div>
 </footer>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const closeBtn = document.getElementById('lightbox-close');
+  const prevBtn = document.getElementById('lightbox-prev');
+  const nextBtn = document.getElementById('lightbox-next');
+  
+  // Alle Galerie-Bilder in ein Array laden
+  const galleryImages = Array.from(document.querySelectorAll('.photo-gallery-grid img'));
+  let currentIndex = 0;
+
+  function showImage(index) {
+    currentIndex = index;
+    lightboxImg.src = galleryImages[currentIndex].src;
+  }
+
+  // Klick-Event für Galeriebilder
+  galleryImages.forEach((img, index) => {
+    img.addEventListener('click', () => {
+      showImage(index);
+      lightbox.classList.add('active');
+    });
+  });
+
+  // Klick-Event für das Hauptbild oben
+  document.querySelector('.detail-img').addEventListener('click', (e) => {
+    lightboxImg.src = e.target.src;
+    lightbox.classList.add('active');
+  });
+
+  // Navigation: Vorheriges Bild
+  prevBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    let newIndex = currentIndex - 1;
+    if (newIndex < 0) newIndex = galleryImages.length - 1;
+    showImage(newIndex);
+  });
+
+  // Navigation: Nächstes Bild
+  nextBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    let newIndex = currentIndex + 1;
+    if (newIndex >= galleryImages.length) newIndex = 0;
+    showImage(newIndex);
+  });
+
+  // Schließen bei Klick auf X
+  closeBtn.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+  });
+
+  // Schließen bei Klick auf den Hintergrund
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      lightbox.classList.remove('active');
+    }
+  });
+
+  // Tastatursteuerung (ESC, Pfeiltasten)
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') lightbox.classList.remove('active');
+    if (e.key === 'ArrowLeft') prevBtn.click();
+    if (e.key === 'ArrowRight') nextBtn.click();
+  });
+</script>
 </body>
 </html>
