@@ -57,10 +57,49 @@ nav a:hover, nav a.active { color: var(--gold); }
 h1.page-title { font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(36px, 6vw, 72px); line-height: 1; letter-spacing: -0.5px; max-width: 900px; }
 .page-sub { max-width: 560px; margin-top: 20px; color: var(--grey); font-size: 16px; line-height: 1.7; }
 
-.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
-.card { background: var(--bg); padding: 0; text-decoration: none; color: inherit; display: block; transition: background .3s; }
-.card:hover { background: var(--bg-raised); }
-.card-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; background: #100e0b; filter: grayscale(15%) contrast(1.05); }
+/* Neugestaltetes Kachel-Grid */
+.grid { 
+  display: grid; 
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 28px; 
+  background: transparent; 
+  border: none; 
+}
+
+/* Kachel-Design mit Abstand, Abhebe-Effekt und Schatten */
+.card { 
+  background: var(--bg-raised); 
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0; 
+  text-decoration: none; 
+  color: inherit; 
+  display: block; 
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease; 
+}
+
+.card:hover { 
+  background: var(--bg-raised); 
+  transform: translateY(-8px); 
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.65), 0 0 16px rgba(201, 161, 92, 0.15); 
+  border-color: var(--gold-dim); 
+}
+
+.card-img { 
+  width: 100%; 
+  aspect-ratio: 4/3; 
+  object-fit: cover; 
+  display: block; 
+  background: #100e0b; 
+  filter: grayscale(15%) contrast(1.05); 
+  transition: filter 0.35s ease;
+}
+
+.card:hover .card-img {
+  filter: grayscale(0%) contrast(1.08);
+}
+
 .card-body { padding: 22px 24px 26px; }
 .card .year { font-family: 'Space Mono', monospace; color: var(--gold); font-size: 13px; letter-spacing: 1px; }
 .card .year .repro { color: var(--grey); font-size: 11px; }
@@ -97,7 +136,7 @@ section.list { padding: 60px 6vw 120px; }
 @media (max-width: 900px) {
   .hero-flex { flex-direction: column; align-items: flex-start; }
   .brand-mark svg { width: 180px; height: 180px; }
-  .grid { grid-template-columns: 1fr; }
+  .grid { grid-template-columns: 1fr; gap: 20px; }
   .detail-wrap { grid-template-columns: 1fr; }
   .detail-info { border-left: none; border-top: 1px solid var(--line); }
   nav { display: none; }
@@ -127,248 +166,203 @@ footer { padding: 50px 6vw; border-top: 1px solid var(--line); display: flex; ju
 <section class="list">
   <div class="grid">
     <a class="card" href="guitars/1959-cc24-nicky.html">
-  <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i9ed795a4174584bb/version/1546173393/image.jpg" alt="Les Paul Collector's Choice CC24 "Nicky - Charles Daughtry"" loading="lazy">
-  <div class="card-body">
-    <div class="year">2015 <span class="repro">/ '59 Repro</span></div>
-    <h3>Gibson Les Paul Collector's Choice CC24</h3>
-    <div class="nickname">"Nicky"</div>
-    
-  </div>
-</a>
+      <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i9ed795a4174584bb/version/1546173393/image.jpg" alt="Les Paul Collector's Choice CC24 &quot;Nicky - Charles Daughtry&quot;" loading="lazy">
+      <div class="card-body">
+        <div class="year">2015 <span class="repro">/ '59 Repro</span></div>
+        <h3>Gibson Les Paul Collector's Choice CC24</h3>
+        <div class="nickname">"Nicky"</div>
+      </div>
+    </a>
     <a class="card" href="guitars/1959-cc16-redeye.html">
-  <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/ia359060309bb54db/version/1448883081/image.jpg" alt="Les Paul Collector's Choice CC16" loading="lazy">
-  <div class="card-body">
-    <div class="year">2013 <span class="repro">/ '59 Repro</span></div>
-    <h3>Gibson Les Paul Collector's Choice CC16</h3>
-    <div class="nickname">"Redeye - Ed King"</div>
-    
-  </div>
-</a>
+      <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/ia359060309bb54db/version/1448883081/image.jpg" alt="Les Paul Collector's Choice CC16" loading="lazy">
+      <div class="card-body">
+        <div class="year">2013 <span class="repro">/ '59 Repro</span></div>
+        <h3>Gibson Les Paul Collector's Choice CC16</h3>
+        <div class="nickname">"Redeye - Ed King"</div>
+      </div>
+    </a>
     <a class="card" href="guitars/1960-cc3-the-babe.html">
-  <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i91bee53fac386af8/version/1742053418/image.jpg" alt="Les Paul Collector's Choice CC3" loading="lazy">
-  <div class="card-body">
-    <div class="year">2012 <span class="repro">/ '60 Repro</span></div>
-    <h3>Gibson Les Paul Collector's Choice CC3</h3>
-    <div class="nickname">"The Babe / Batman"</div>
-    
-  </div>
-</a>
+      <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i91bee53fac386af8/version/1742053418/image.jpg" alt="Les Paul Collector's Choice CC3" loading="lazy">
+      <div class="card-body">
+        <div class="year">2012 <span class="repro">/ '60 Repro</span></div>
+        <h3>Gibson Les Paul Collector's Choice CC3</h3>
+        <div class="nickname">"The Babe / Batman"</div>
+      </div>
+    </a>
     <a class="card" href="guitars/1958-amanda.html">
-  <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i3df2b6e67a67c837/version/1449397127/image.jpg" alt="Les Paul Historic Reissue VOS Flametop" loading="lazy">
-  <div class="card-body">
-    <div class="year">2014 <span class="repro">/ '58 Repro</span></div>
-    <h3>Gibson Les Paul Historic Reissue VOS Flametop</h3>
-    <div class="nickname">"Amanda"</div>
-    
-  </div>
-</a>
+      <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i3df2b6e67a67c837/version/1449397127/image.jpg" alt="Les Paul Historic Reissue VOS Flametop" loading="lazy">
+      <div class="card-body">
+        <div class="year">2014 <span class="repro">/ '58 Repro</span></div>
+        <h3>Gibson Les Paul Historic Reissue VOS Flametop</h3>
+        <div class="nickname">"Amanda"</div>
+      </div>
+    </a>
     <a class="card" href="guitars/1958-carol.html">
-  <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i5ee5e54c6c78426f/version/1482745618/image.jpg" alt="Les Paul Historic Reissue VOS Flametop" loading="lazy">
-  <div class="card-body">
-    <div class="year">2016 <span class="repro">/ '58 Repro</span></div>
-    <h3>Gibson Les Paul Historic Reissue VOS Flametop</h3>
-    <div class="nickname">"Carol"</div>
-    
-  </div>
-</a>
+      <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i5ee5e54c6c78426f/version/1482745618/image.jpg" alt="Les Paul Historic Reissue VOS Flametop" loading="lazy">
+      <div class="card-body">
+        <div class="year">2016 <span class="repro">/ '58 Repro</span></div>
+        <h3>Gibson Les Paul Historic Reissue VOS Flametop</h3>
+        <div class="nickname">"Carol"</div>
+      </div>
+    </a>
     <a class="card" href="guitars/1959-roxy.html">
-  <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i4429ef84ce382910/version/1480839434/image.jpg" alt="Les Paul Historic Reissue Aged Flametop" loading="lazy">
-  <div class="card-body">
-    <div class="year">2012 <span class="repro">/ '59 Repro</span></div>
-    <h3>Gibson Les Paul Historic Reissue Aged Flametop</h3>
-    <div class="nickname">"Roxy"</div>
-    
-  </div>
-</a>
+      <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i4429ef84ce382910/version/1480839434/image.jpg" alt="Les Paul Historic Reissue Aged Flametop" loading="lazy">
+      <div class="card-body">
+        <div class="year">2012 <span class="repro">/ '59 Repro</span></div>
+        <h3>Gibson Les Paul Historic Reissue Aged Flametop</h3>
+        <div class="nickname">"Roxy"</div>
+      </div>
+    </a>
     <a class="card" href="guitars/1959-kate.html">
-  <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i88da666eacdcc62a/version/1450293392/image.jpg" alt="Les Paul Historic Reissue Flametop" loading="lazy">
-  <div class="card-body">
-    <div class="year">2014 <span class="repro">/ '59 Repro</span></div>
-    <h3>Gibson Les Paul Historic Reissue Flametop</h3>
-    <div class="nickname">"Kate"</div>
-    
-  </div>
-</a>
+      <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i88da666eacdcc62a/version/1450293392/image.jpg" alt="Les Paul Historic Reissue Flametop" loading="lazy">
+      <div class="card-body">
+        <div class="year">2014 <span class="repro">/ '59 Repro</span></div>
+        <h3>Gibson Les Paul Historic Reissue Flametop</h3>
+        <div class="nickname">"Kate"</div>
+      </div>
+    </a>
     <a class="card" href="guitars/1954-goldtop-freischlader.html">
-  <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i30be351b5f105b28/version/1520331597/image.jpg" alt="Les Paul Historic Reissue Goldtop" loading="lazy">
-  <div class="card-body">
-    <div class="year">2004 <span class="repro">/ '54 Repro</span></div>
-    <h3>Gibson Les Paul Historic Reissue Goldtop</h3>
-    
-    
-  </div>
-</a>
+      <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i30be351b5f105b28/version/1520331597/image.jpg" alt="Les Paul Historic Reissue Goldtop" loading="lazy">
+      <div class="card-body">
+        <div class="year">2004 <span class="repro">/ '54 Repro</span></div>
+        <h3>Gibson Les Paul Historic Reissue Goldtop</h3>
+      </div>
+    </a>
     <a class="card" href="guitars/1963-es335-historic-burst.html">
-  <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i5ca092616eda1cf9/version/1506000703/image.jpg" alt="ES-335 TD Historic Burst VOS" loading="lazy">
-  <div class="card-body">
-    <div class="year">2016 <span class="repro">/ '63 Repro</span></div>
-    <h3>Gibson ES-335 TD Historic Burst VOS</h3>
-    
-    
-  </div>
-</a>
+      <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i5ca092616eda1cf9/version/1506000703/image.jpg" alt="ES-335 TD Historic Burst VOS" loading="lazy">
+      <div class="card-body">
+        <div class="year">2016 <span class="repro">/ '63 Repro</span></div>
+        <h3>Gibson ES-335 TD Historic Burst VOS</h3>
+      </div>
+    </a>
     <a class="card" href="guitars/1973-es335-watermelon.html">
-  <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=1200x10000:format=jpg/path/s8484630f1b34ca9a/image/i74baa0fcd7a33c0d/version/1737722931/image.jpg" alt="ES-335 TD" loading="lazy">
-  <div class="card-body">
-    <div class="year">1973</div>
-    <h3>Gibson ES-335 TD Watermelon</h3>
-    
-    
-  </div>
-</a>
+      <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=1200x10000:format=jpg/path/s8484630f1b34ca9a/image/i74baa0fcd7a33c0d/version/1737722931/image.jpg" alt="ES-335 TD" loading="lazy">
+      <div class="card-body">
+        <div class="year">1973</div>
+        <h3>Gibson ES-335 TD Watermelon</h3>
+      </div>
+    </a>
     <a class="card" href="guitars/1978-lp-deluxe-p90.html">
-  <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/iaab84c8da954508f/version/1448883126/image.jpg" alt="Les Paul Deluxe P90" loading="lazy">
-  <div class="card-body">
-    <div class="year">1978</div>
-    <h3>Gibson Les Paul Deluxe P90</h3>
-    
-    
-  </div>
-</a>
+      <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/iaab84c8da954508f/version/1448883126/image.jpg" alt="Les Paul Deluxe P90" loading="lazy">
+      <div class="card-body">
+        <div class="year">1978</div>
+        <h3>Gibson Les Paul Deluxe P90</h3>
+      </div>
+    </a>
     <a class="card" href="guitars/1972-strat-blackie.html">
-  <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/ic55bca756bff2734/version/1448883117/image.jpg" alt="Stratocaster" loading="lazy">
-  <div class="card-body">
-    <div class="year">1972</div>
-    <h3>Fender Stratocaster</h3>
-    <div class="nickname">"Blackie"</div>
-    
-  </div>
-</a>
+      <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/ic55bca756bff2734/version/1448883117/image.jpg" alt="Stratocaster" loading="lazy">
+      <div class="card-body">
+        <div class="year">1972</div>
+        <h3>Fender Stratocaster</h3>
+        <div class="nickname">"Blackie"</div>
+      </div>
+    </a>
     <a class="card" href="guitars/1973-tele-rosie.html">
-  <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i29c0377846397c30/version/1533317649/image.jpg" alt="Telecaster" loading="lazy">
-  <div class="card-body">
-    <div class="year">1973</div>
-    <h3>Fender Telecaster</h3>
-    <div class="nickname">"Rosie"</div>
-    
-  </div>
-</a>
+      <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i29c0377846397c30/version/1533317649/image.jpg" alt="Telecaster" loading="lazy">
+      <div class="card-body">
+        <div class="year">1973</div>
+        <h3>Fender Telecaster</h3>
+        <div class="nickname">"Rosie"</div>
+      </div>
+    </a>
     <a class="card" href="guitars/1993-strat-st62.html">
-  <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i92db3c756f3618e4/version/1449266391/image.jpg" alt="Stratocaster ST62" loading="lazy">
-  <div class="card-body">
-    <div class="year">1993 <span class="repro">/ '62 Repro</span></div>
-    <h3>Fender Stratocaster ST62</h3>
-    
-    
-  </div>
-</a>
+      <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i92db3c756f3618e4/version/1449266391/image.jpg" alt="Stratocaster ST62" loading="lazy">
+      <div class="card-body">
+        <div class="year">1993 <span class="repro">/ '62 Repro</span></div>
+        <h3>Fender Stratocaster ST62</h3>
+      </div>
+    </a>
     <a class="card" href="guitars/1996-strat-st54.html">
-  <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i3b0dbbc537cd776a/version/1742053771/image.jpg" alt="Stratocaster ST54" loading="lazy">
-  <div class="card-body">
-    <div class="year">1996 <span class="repro">/ '54 Repro</span></div>
-    <h3>Fender Stratocaster ST54</h3>
-    
-    
-  </div>
-</a>
+      <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i3b0dbbc537cd776a/version/1742053771/image.jpg" alt="Stratocaster ST54" loading="lazy">
+      <div class="card-body">
+        <div class="year">1996 <span class="repro">/ '54 Repro</span></div>
+        <h3>Fender Stratocaster ST54</h3>
+      </div>
+    </a>
     <a class="card" href="guitars/1997-strat-st62.html">
-  <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i776bb5ea29d4b186/version/1526641031/image.jpg" alt="Stratocaster ST62" loading="lazy">
-  <div class="card-body">
-    <div class="year">1997 <span class="repro">/ '62 Repro</span></div>
-    <h3>Fender Stratocaster ST62</h3>
-    
-    
-  </div>
-</a>
+      <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i776bb5ea29d4b186/version/1526641031/image.jpg" alt="Stratocaster ST62" loading="lazy">
+      <div class="card-body">
+        <div class="year">1997 <span class="repro">/ '62 Repro</span></div>
+        <h3>Fender Stratocaster ST62</h3>
+      </div>
+    </a>
     <a class="card" href="guitars/2004-tele-california-beach.html">
-  <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i3ae2e2c4876d68e2/version/1526210576/image.jpg" alt="Telecaster '52 Custom Shop "California Beach" Ltd. Edition" loading="lazy">
-  <div class="card-body">
-    <div class="year">2004 <span class="repro">/ '52 Repro</span></div>
-    <h3>Fender Telecaster '52 Custom Shop "California Beach" Ltd. Edition</h3>
-    
-    
-  </div>
-</a>
+      <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i3ae2e2c4876d68e2/version/1526210576/image.jpg" alt="Telecaster '52 Custom Shop &quot;California Beach&quot; Ltd. Edition" loading="lazy">
+      <div class="card-body">
+        <div class="year">2004 <span class="repro">/ '52 Repro</span></div>
+        <h3>Fender Telecaster '52 Custom Shop "California Beach" Ltd. Edition</h3>
+      </div>
+    </a>
     <a class="card" href="guitars/2005-strat-66-closet-classic.html">
-  <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i38c610879cc7bcca/version/1587557064/image.jpg" alt="Stratocaster '66 Custom Shop Closet Classic Ltd. Edition" loading="lazy">
-  <div class="card-body">
-    <div class="year">2005 <span class="repro">/ '66 Repro</span></div>
-    <h3>Fender Stratocaster '66 Custom Shop Closet Classic Ltd. Edition</h3>
-    
-    
-  </div>
-</a>
+      <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i38c610879cc7bcca/version/1587557064/image.jpg" alt="Stratocaster '66 Custom Shop Closet Classic Ltd. Edition" loading="lazy">
+      <div class="card-body">
+        <div class="year">2005 <span class="repro">/ '66 Repro</span></div>
+        <h3>Fender Stratocaster '66 Custom Shop Closet Classic Ltd. Edition</h3>
+      </div>
+    </a>
     <a class="card" href="guitars/2009-strat-clapton.html">
-  <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i8ecd3b2f2e5af039/version/1449308663/image.jpg" alt="Stratocaster Custom Shop Eric Clapton Ltd. Edition" loading="lazy">
-  <div class="card-body">
-    <div class="year">2009</div>
-    <h3>Fender Stratocaster Custom Shop Eric Clapton Ltd. Edition</h3>
-    
-    
-  </div>
-</a>
+      <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i8ecd3b2f2e5af039/version/1449308663/image.jpg" alt="Stratocaster Custom Shop Eric Clapton Ltd. Edition" loading="lazy">
+      <div class="card-body">
+        <div class="year">2009</div>
+        <h3>Fender Stratocaster Custom Shop Eric Clapton Ltd. Edition</h3>
+      </div>
+    </a>
     <a class="card" href="guitars/2009-strat-classic-player-50s.html">
-  <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i94a33534e2a19f97/version/1449307712/image.jpg" alt="Stratocaster Classic Player 50s" loading="lazy">
-  <div class="card-body">
-    <div class="year">2009 <span class="repro">/ '50 Repro</span></div>
-    <h3>Fender Stratocaster Classic Player 50s</h3>
-    
-    
-  </div>
-</a>
+      <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i94a33534e2a19f97/version/1449307712/image.jpg" alt="Stratocaster Classic Player 50s" loading="lazy">
+      <div class="card-body">
+        <div class="year">2009 <span class="repro">/ '50 Repro</span></div>
+        <h3>Fender Stratocaster Classic Player 50s</h3>
+      </div>
+    </a>
     <a class="card" href="guitars/2015-tele-tl62b.html">
-  <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i930d777025afbdd9/version/1462114858/image.jpg" alt="Telecaster '62 Custom Reissue TL62B" loading="lazy">
-  <div class="card-body">
-    <div class="year">2015 <span class="repro">/ '62 Repro</span></div>
-    <h3>Fender Telecaster '62 Custom Reissue TL62B</h3>
-    
-    
-  </div>
-</a>
+      <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i930d777025afbdd9/version/1462114858/image.jpg" alt="Telecaster '62 Custom Reissue TL62B" loading="lazy">
+      <div class="card-body">
+        <div class="year">2015 <span class="repro">/ '62 Repro</span></div>
+        <h3>Fender Telecaster '62 Custom Reissue TL62B</h3>
+      </div>
+    </a>
     <a class="card" href="guitars/2019-strat-clapton-signature.html">
-  <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i2585d0fd4d799476/version/1742053476/image.jpg" alt="Stratocaster Eric Clapton Signature" loading="lazy">
-  <div class="card-body">
-    <div class="year">2019</div>
-    <h3>Fender Stratocaster Eric Clapton Signature</h3>
-    
-    
-  </div>
-</a>
+      <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i2585d0fd4d799476/version/1742053476/image.jpg" alt="Stratocaster Eric Clapton Signature" loading="lazy">
+      <div class="card-body">
+        <div class="year">2019</div>
+        <h3>Fender Stratocaster Eric Clapton Signature</h3>
+      </div>
+    </a>
     <a class="card" href="guitars/1982-maison-lpc190.html">
-  <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/ia7913a7fabe47f38/version/1449264722/image.jpg" alt="Maison Les Paul Custom LPC-190" loading="lazy">
-  <div class="card-body">
-    <div class="year">1982</div>
-    <h3>Maison Les Paul Custom LPC-190</h3>
-    
-    
-  </div>
-</a>
+      <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/ia7913a7fabe47f38/version/1449264722/image.jpg" alt="Maison Les Paul Custom LPC-190" loading="lazy">
+      <div class="card-body">
+        <div class="year">1982</div>
+        <h3>Maison Les Paul Custom LPC-190</h3>
+      </div>
+    </a>
     <a class="card" href="guitars/1989-burny-rsg75.html">
-  <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/iccab23971bf8925b/version/1468774580/image.jpg" alt="Burny RSG-75 '63 Model" loading="lazy">
-  <div class="card-body">
-    <div class="year">1989 <span class="repro">/ '63 Repro</span></div>
-    <h3>Burny RSG-75 '63 Model</h3>
-    
-    
-  </div>
-</a>
+      <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/iccab23971bf8925b/version/1468774580/image.jpg" alt="Burny RSG-75 '63 Model" loading="lazy">
+      <div class="card-body">
+        <div class="year">1989 <span class="repro">/ '63 Repro</span></div>
+        <h3>Burny RSG-75 '63 Model</h3>
+      </div>
+    </a>
     <a class="card" href="guitars/2007-prs-allender.html">
-  <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/ida543e0696207d4b/version/1449267653/image.jpg" alt="PRS SE Paul Allender" loading="lazy">
-  <div class="card-body">
-    <div class="year">2007</div>
-    <h3>PRS SE Paul Allender</h3>
-    
-    
-  </div>
-</a>
+      <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/ida543e0696207d4b/version/1449267653/image.jpg" alt="PRS SE Paul Allender" loading="lazy">
+      <div class="card-body">
+        <div class="year">2007</div>
+        <h3>PRS SE Paul Allender</h3>
+      </div>
+    </a>
     <a class="card" href="guitars/2022-epiphone-lp-special.html">
-  <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i6a915802d1b08215/version/1742053492/image.jpg" alt="Epiphone Les Paul Special" loading="lazy">
-  <div class="card-body">
-    <div class="year">2022</div>
-    <h3>Epiphone Les Paul Special</h3>
-    
-    
-  </div>
-</a>
+      <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i6a915802d1b08215/version/1742053492/image.jpg" alt="Epiphone Les Paul Special" loading="lazy">
+      <div class="card-body">
+        <div class="year">2022</div>
+        <h3>Epiphone Les Paul Special</h3>
+      </div>
+    </a>
     <a class="card" href="guitars/2024-custom-tele-relic.html">
-  <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i3f5a9e979cb07b14/version/1742053497/image.jpg" alt="Custom Telecaster 50s Relic" loading="lazy">
-  <div class="card-body">
-    <div class="year">2024</div>
-    <h3>Custom Telecaster 50s Relic</h3>
-    
-    
-  </div>
-</a>
+      <img class="card-img" src="https://image.jimcdn.com/app/cms/image/transf/dimension=800x10000:format=jpg/path/s8484630f1b34ca9a/image/i3f5a9e979cb07b14/version/1742053497/image.jpg" alt="Custom Telecaster 50s Relic" loading="lazy">
+      <div class="card-body">
+        <div class="year">2024</div>
+        <h3>Custom Telecaster 50s Relic</h3>
+      </div>
+    </a>
   </div>
 </section>
 <footer>
